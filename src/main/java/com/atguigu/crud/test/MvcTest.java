@@ -26,7 +26,6 @@ import com.github.pagehelper.PageInfo;
 /**
  * 使用Spring测试木块提供的测试请求功能，测试crud请求的正确性
  * Spring4测试的时候，需要servlet3.0的支持
- * @author wp
  *
  */
 
