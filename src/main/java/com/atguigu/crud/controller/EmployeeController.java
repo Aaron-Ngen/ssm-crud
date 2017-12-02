@@ -29,7 +29,6 @@ import com.sun.xml.internal.org.jvnet.staxex.NamespaceContextEx.Binding;
 
 /**
  * 处理员工 CRUD请求
- * @author wp
  *
  */
 @Controller
