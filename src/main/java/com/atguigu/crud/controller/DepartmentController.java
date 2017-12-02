@@ -13,7 +13,6 @@ import com.atguigu.crud.bean.Msg;
 
 /**
  * 处理和部门有关的请求
- * @author Boyce
  */
 @Controller
 public class DepartmentController {
