@@ -15,6 +15,7 @@ import com.atguigu.crud.dao.EmployeeMapper;
 public class EmployeeService {
 	
 	@Autowired
+	@SuppressWarnings("SpringJavaAutowiringInspection")
 	EmployeeMapper employeeMapper;
 
 	/**

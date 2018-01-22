@@ -84,6 +84,7 @@ public class EmployeeController {
 	 *  PUT请求，请求体中的数据,request.getparameter("email),拿不到数据
 	 *  Tomcat一看是PUT请求不会封装请求体中的数据为map,只有POST形式的请求才封装请求体为map
 	 *  org.apache.catalina.connector.Request ;
+	 *
 	 *  protected String parseBodyMethods = "POST"
 	 *  if(!getConnector().isParseBodyMethod(getMethod())){
 	 *  		success = true;
@@ -179,6 +180,7 @@ public class EmployeeController {
 		}
 
 	}
+
 	/**
 	 * 导入jackson包
 	 * @param pn
@@ -198,8 +200,6 @@ public class EmployeeController {
 		//封装了详细的分页信息,包括有我们查询出来的数据,传入:连续显示的页数
 		PageInfo page=new PageInfo(emps,5); //5表示要连续显示的页数
 		return Msg.success().add("pageInfo",page);
-
-
 	}
 
 	/**

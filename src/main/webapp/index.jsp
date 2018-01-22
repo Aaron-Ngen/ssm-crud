@@ -16,7 +16,7 @@
             src="${APP_PATH}/static/js/jquery-2.0.0.min.js"></script>
 </head>
 <body>
-<!--开始的相对路径，赵资源，以当前资源的路径为基准，经常容易处问题
+<!--开始的相对路径，找资源，以当前资源的路径为基准，经常容易处问题
 以/开始的相对路径，以服务器的路径为标准
 http://localhost:3306/crud
 -->
@@ -273,9 +273,9 @@ http://localhost:3306/crud
         //page_info_area
         $("#page_info_area ").empty();
         $("#page_info_area").append(
-            "当前第" + result.extend.pageInfo.pageNum + "页,总"
-            + result.extend.pageInfo.pages + "页,总"
-            + result.extend.pageInfo.total + "条记录数");
+            "当前第[ " + result.extend.pageInfo.pageNum + " ]页,总[ "
+            + result.extend.pageInfo.pages + " ]页,总[ "
+            + result.extend.pageInfo.total + " ]条记录数");
         totalRecord=result.extend.pageInfo.total; //赋值为总记录数
         currentPage = result.extend.pageInfo.pageNum;
 
@@ -288,6 +288,7 @@ http://localhost:3306/crud
         //构建元素
         var firstPageLi = $("<li></li>").append(
             $("<a></a>").append("首页").attr("href", "#"));
+
         var prePageLi = $("<li></li>").append(
             $("<a></a>").append("&laquo;"));
         if (result.extend.pageInfo.hasPreviousPage == false) {
@@ -325,8 +326,7 @@ http://localhost:3306/crud
         //添加首页和前一页的提示
         ul.append(firstPageLi).append(prePageLi);
         //1.2.3遍历给ul中添加页码提示
-        $.each(result.extend.pageInfo.navigatepageNums, function(index,
-                                                                 item) {
+        $.each(result.extend.pageInfo.navigatepageNums, function(index,item) {
             var numLi = $("<li></li>").append($("<a></a>").append(item));
             if (result.extend.pageInfo.pageNum == item) {
                 numLi.addClass("active");
@@ -357,7 +357,7 @@ http://localhost:3306/crud
     $("#emp_add_modal_btn").click(function() {
         //清除表单数据(表单完整重置(表单的数据，表单的样式))
         reset_form("#empAddModal form");
-        $("#empAddModal form")[0].reset();
+        //$("#empAddModal form")[0].reset();
         //发送ajax请求，查出部门信息，显示在下拉列表中
         getDepts("#empAddModal select");
         //弹出模态框
@@ -497,13 +497,14 @@ http://localhost:3306/crud
     });
 
 
-    //1.我们是按钮创建之前就绑定了click,所以绑定不上
-    //1.我们可以在创建按钮的时候绑定事件.  2.绑定点击 live
+    //在按钮创建之前就绑定了click,所以绑定不上
+    // 1）. 可以在创建按钮的时候绑定事件.
+    // 2）. 绑定点击 live
     //jquery新版没有live,使用on进行替代
     //
     $(document). on("click", ".edit_btn" ,function(){
-        //0.查出员工信息，显示员工信息
-        //1.查出部门信息，并显示部门列表
+        //1.查出员工信息，显示员工信息
+        //2.查出部门信息，并显示部门列表
         getDepts("#empUpdateModal select");
         getEmp($(this).attr("edit-id")); //获取当前按钮的id
         //3.把员工的id传递给模态框的更新按钮
@@ -511,7 +512,6 @@ http://localhost:3306/crud
         $("#empUpdateModal").modal({ //利用js创建模态框
             backdrop : "static"
         });
-
     });
 
     function getEmp(id){
@@ -585,20 +585,18 @@ http://localhost:3306/crud
         //我们这些dom原生的属性:attr获取自定义属性的值,prop获取原生的值
         //alert($(this).prop("checked"));
         //$(".check_item").prop("checked",$(this).prop("checked"));
-
-        var flag = $(".check_item:checked").length==$(".check_item").length;
+        var flag = $(".check_item:checked").length == $(".check_item").length;
         if(flag){
             $(".check_item").prop("checked",false);
         }else{
             $(".check_item").prop("checked",$(this).prop("checked"));
         }
-
     });
 
     //check_item
     $(document). on("click", ".check_item" ,function(){
         //判断当前选中的元素是否为当前页面元素的总个数
-        var flag = $(".check_item:checked").length==$(".check_item").length;
+        var flag = $(".check_item:checked").length == $(".check_item").length;
         //将判断值赋予全选按钮
         $("#check_all").prop("checked",flag);
 

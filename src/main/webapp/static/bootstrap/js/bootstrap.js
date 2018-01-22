@@ -1296,7 +1296,7 @@ if (typeof jQuery === 'undefined') {
     delay: 0,
     html: false,
     container: false,
-    viewport: {
+    vieBoyceort: {
       selector: 'body',
       padding: 0
     }
@@ -1307,7 +1307,7 @@ if (typeof jQuery === 'undefined') {
     this.type      = type
     this.$element  = $(element)
     this.options   = this.getOptions(options)
-    this.$viewport = this.options.viewport && $($.isFunction(this.options.viewport) ? this.options.viewport.call(this, this.$element) : (this.options.viewport.selector || this.options.viewport))
+    this.$vieBoyceort = this.options.vieBoyceort && $($.isFunction(this.options.vieBoyceort) ? this.options.vieBoyceort.call(this, this.$element) : (this.options.vieBoyceort.selector || this.options.vieBoyceort))
     this.inState   = { click: false, hover: false, focus: false }
 
     if (this.$element[0] instanceof document.constructor && !this.options.selector) {
@@ -1469,12 +1469,12 @@ if (typeof jQuery === 'undefined') {
 
       if (autoPlace) {
         var orgPlacement = placement
-        var viewportDim = this.getPosition(this.$viewport)
+        var vieBoyceortDim = this.getPosition(this.$vieBoyceort)
 
-        placement = placement == 'bottom' && pos.bottom + actualHeight > viewportDim.bottom ? 'top'    :
-                    placement == 'top'    && pos.top    - actualHeight < viewportDim.top    ? 'bottom' :
-                    placement == 'right'  && pos.right  + actualWidth  > viewportDim.width  ? 'left'   :
-                    placement == 'left'   && pos.left   - actualWidth  < viewportDim.left   ? 'right'  :
+        placement = placement == 'bottom' && pos.bottom + actualHeight > vieBoyceortDim.bottom ? 'top'    :
+                    placement == 'top'    && pos.top    - actualHeight < vieBoyceortDim.top    ? 'bottom' :
+                    placement == 'right'  && pos.right  + actualWidth  > vieBoyceortDim.width  ? 'left'   :
+                    placement == 'left'   && pos.left   - actualWidth  < vieBoyceortDim.left   ? 'right'  :
                     placement
 
         $tip
@@ -1539,7 +1539,7 @@ if (typeof jQuery === 'undefined') {
       offset.top = offset.top + height - actualHeight
     }
 
-    var delta = this.getViewportAdjustedDelta(placement, offset, actualWidth, actualHeight)
+    var delta = this.getVieBoyceortAdjustedDelta(placement, offset, actualWidth, actualHeight)
 
     if (delta.left) offset.left += delta.left
     else offset.top += delta.top
@@ -1638,28 +1638,28 @@ if (typeof jQuery === 'undefined') {
 
   }
 
-  Tooltip.prototype.getViewportAdjustedDelta = function (placement, pos, actualWidth, actualHeight) {
+  Tooltip.prototype.getVieBoyceortAdjustedDelta = function (placement, pos, actualWidth, actualHeight) {
     var delta = { top: 0, left: 0 }
-    if (!this.$viewport) return delta
+    if (!this.$vieBoyceort) return delta
 
-    var viewportPadding = this.options.viewport && this.options.viewport.padding || 0
-    var viewportDimensions = this.getPosition(this.$viewport)
+    var vieBoyceortPadding = this.options.vieBoyceort && this.options.vieBoyceort.padding || 0
+    var vieBoyceortDimensions = this.getPosition(this.$vieBoyceort)
 
     if (/right|left/.test(placement)) {
-      var topEdgeOffset    = pos.top - viewportPadding - viewportDimensions.scroll
-      var bottomEdgeOffset = pos.top + viewportPadding - viewportDimensions.scroll + actualHeight
-      if (topEdgeOffset < viewportDimensions.top) { // top overflow
-        delta.top = viewportDimensions.top - topEdgeOffset
-      } else if (bottomEdgeOffset > viewportDimensions.top + viewportDimensions.height) { // bottom overflow
-        delta.top = viewportDimensions.top + viewportDimensions.height - bottomEdgeOffset
+      var topEdgeOffset    = pos.top - vieBoyceortPadding - vieBoyceortDimensions.scroll
+      var bottomEdgeOffset = pos.top + vieBoyceortPadding - vieBoyceortDimensions.scroll + actualHeight
+      if (topEdgeOffset < vieBoyceortDimensions.top) { // top overflow
+        delta.top = vieBoyceortDimensions.top - topEdgeOffset
+      } else if (bottomEdgeOffset > vieBoyceortDimensions.top + vieBoyceortDimensions.height) { // bottom overflow
+        delta.top = vieBoyceortDimensions.top + vieBoyceortDimensions.height - bottomEdgeOffset
       }
     } else {
-      var leftEdgeOffset  = pos.left - viewportPadding
-      var rightEdgeOffset = pos.left + viewportPadding + actualWidth
-      if (leftEdgeOffset < viewportDimensions.left) { // left overflow
-        delta.left = viewportDimensions.left - leftEdgeOffset
-      } else if (rightEdgeOffset > viewportDimensions.right) { // right overflow
-        delta.left = viewportDimensions.left + viewportDimensions.width - rightEdgeOffset
+      var leftEdgeOffset  = pos.left - vieBoyceortPadding
+      var rightEdgeOffset = pos.left + vieBoyceortPadding + actualWidth
+      if (leftEdgeOffset < vieBoyceortDimensions.left) { // left overflow
+        delta.left = vieBoyceortDimensions.left - leftEdgeOffset
+      } else if (rightEdgeOffset > vieBoyceortDimensions.right) { // right overflow
+        delta.left = vieBoyceortDimensions.left + vieBoyceortDimensions.width - rightEdgeOffset
       }
     }
 
@@ -1738,7 +1738,7 @@ if (typeof jQuery === 'undefined') {
       }
       that.$tip = null
       that.$arrow = null
-      that.$viewport = null
+      that.$vieBoyceort = null
       that.$element = null
     })
   }

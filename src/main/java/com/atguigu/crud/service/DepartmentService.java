@@ -13,6 +13,7 @@ import com.atguigu.crud.dao.DepartmentMapper;
 public class DepartmentService {
 
     @Autowired
+    @SuppressWarnings("SpringJavaAutowiringInspection")
     private DepartmentMapper departmentMapper;
 
     public List<Department> getDepts() {
