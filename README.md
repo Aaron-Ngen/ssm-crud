@@ -1,4 +1,4 @@
-# SSM_CRUD
+# SSM_CRUD Pro
 ## 本项目基于尚硅谷的 SSM 框架整合视频所开发。</br>
 ## 使用 `Maven+SpringMVC+Spring+MyBatis+Bootstrap` 的组合，实现完整的 `CRUD` 功能。</br>
 * **Bootstrap** 搭建页面；
